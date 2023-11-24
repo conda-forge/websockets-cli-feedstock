@@ -1,5 +1,5 @@
 {% set name = "websockets-cli" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 5fd9aa60103f9ad3c39cb9368220cfa6159bc16a4ae10154e9f6c53a2c1bb02a
+  sha256: 0b2e729cee65f67406840a502cd915ee5ecb450849517be2470e61d180129343
 
 build:
   entry_points:
