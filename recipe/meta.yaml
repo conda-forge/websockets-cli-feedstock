@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: 0b2e729cee65f67406840a502cd915ee5ecb450849517be2470e61d180129343
 
 build:
@@ -14,15 +14,15 @@ build:
     - ws = ws.main:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - poetry-core >=1.0.0
-    - python >=3.8,<4.0
+    - python {{ python_min }}
   run:
-    - python >=3.8,<4.0
+    - python >={{ python_min }},<4.0
     - trio-websocket >=0.11.1,<0.12.0
     - rich >=13.7.0,<14.0.0
     - pydantic >=2.5.0,<3.0.0
@@ -41,6 +41,7 @@ test:
     - ws --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/lewoudar/ws
